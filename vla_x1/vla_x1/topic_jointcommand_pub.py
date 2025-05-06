@@ -22,12 +22,7 @@ class JointCommandPublisher(Node):
     def publish_from_redis(self):
         try:
             # 从 Redis list 右侧左弹出一个值
-            data = self.redis_client.lpop('joint_cmd')
-            if data is None:
-                self.get_logger().warn("No data in Redis list 'joint_cmd'")
-                time.sleep(0.1)
-                return
-
+            _, data = self.redis_client.blpop('joint_cmd')
             # 数据是 JSON 格式的字符串
             joint_data = json.loads(data.decode('utf-8'))
             # 构造 JointCommand 消息
