@@ -3,6 +3,7 @@ from rclpy.node import Node
 from vla_msg.msg import JointCommand  # 导入自定义消息类型
 import redis
 import json
+import time
 
 """
 从redis list 'joint_cmd' 得到关节数据并写到ros2 topic 'joint_cmd'
@@ -24,6 +25,7 @@ class JointCommandPublisher(Node):
             data = self.redis_client.lpop('joint_cmd')
             if data is None:
                 self.get_logger().warn("No data in Redis list 'joint_cmd'")
+                time.sleep(0.1)
                 return
 
             # 数据是 JSON 格式的字符串
@@ -33,7 +35,7 @@ class JointCommandPublisher(Node):
             msg.name = joint_data.get("name", [])
             msg.position = joint_data.get("position", [])
             msg.velocity = joint_data.get("velocity", [])
-            msg.efforts = joint_data.get("efforts", [])
+            msg.effort = joint_data.get("effort", [])
             msg.stiffness = joint_data.get("stiffness", [])
             msg.damping = joint_data.get("damping", [])
 
