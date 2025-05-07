@@ -7,7 +7,7 @@
   <maintainer email="yonsvm@todo.todo">yonsvm</maintainer>
   <license>TODO: License declaration</license>
 
-  <depend>vla_msg</depend>
+  <depend>my_ros2_proto</depend>
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
 

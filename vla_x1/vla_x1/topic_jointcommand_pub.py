@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from vla_msg.msg import JointCommand  # 导入自定义消息类型
+from my_ros2_proto.msg import JointCommand  # 导入自定义消息类型
 import redis
 import json
 import time
