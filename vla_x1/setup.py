@@ -23,6 +23,7 @@ setup(
         'console_scripts': [
             'topic_jointcommand_pub = vla_x1.topic_jointcommand_pub:main',
             'topic_jointstate_sub = vla_x1.topic_jointstate_sub:main',
+            'topic_helloworld_sub = vla_x1.topic_helloworld_sub:main',
         ],
     },
 )
